@@ -93,9 +93,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         printCurrentScript()
     }
 })
+function imsorry4 () {
+	
+}
 function finalChoice () {
-    FinalChoice1 = createScript("Old Man", "Well, I just need enough water for this garden here", 0)
-    FinalChoice2 = createScript("Cloud", "I can make that happen! What's the magic word?", 0)
+    FinalChoice1 = createScript("Mr. Kao", "Well, I just need enough water for this garden here", 0)
+    FinalChoice2 = createScript("Pineapple", "I can make that happen! What's the magic word?", 0)
     blockObject.setAnyProperty(FinalChoice1, AnyProp.NextPage, FinalChoice2)
     blockObject.setStringArrayProperty(FinalChoice2, StrArrayProp.Choices, ["Please!", "Abracadabra!"])
     blockObject.setAnyProperty(FinalChoice2, AnyProp.Choice1, happyEnding())
@@ -141,6 +144,7 @@ function imsorry () {
     imsorry3 = createScript("Mr. Kao", "okay thank you so much!!", 3)
     blockObject.setAnyProperty(imsorry1, AnyProp.NextPage, imsorry2)
     blockObject.setAnyProperty(imsorry2, AnyProp.NextPage, imsorry3)
+    blockObject.setAnyProperty(imsorry3, AnyProp.NextPage, finalChoice())
     return imsorry1
 }
 function imAnOldMan () {
@@ -173,6 +177,18 @@ function createScript (characterName: string, text: string, portrait: number) {
     blockObject.setNumberProperty(newScript, NumProp.Portrait, portrait)
     return newScript
 }
+function sadending () {
+    sadending1 = createScript("Mr. Kao", "please be generous enough to give me water", 1)
+    sadending2 = createScript("Pineapple", "NO, either you pay me now, or i struck you and your plants ", 2)
+    sadending3 = createScript("Mr. Kao", "i have no money to give you so i guess", 5)
+    blockObject.setAnyProperty(sadending1, AnyProp.NextPage, sadending2)
+    blockObject.setAnyProperty(sadending2, AnyProp.NextPage, sadending3)
+    blockObject.setAnyProperty(sadending3, AnyProp.NextPage, finalChoice())
+    return sadending1
+}
+let sadending3: blockObject.BlockObject = null
+let sadending2: blockObject.BlockObject = null
+let sadending1: blockObject.BlockObject = null
 let newScript: blockObject.BlockObject = null
 let nomoneyforyou3: blockObject.BlockObject = null
 let nomoneyforyou2: blockObject.BlockObject = null
