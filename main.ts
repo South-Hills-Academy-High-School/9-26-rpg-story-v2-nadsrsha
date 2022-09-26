@@ -43,9 +43,6 @@ function happyEnding () {
     blockObject.setAnyProperty(happy3, AnyProp.NextPage, happy4)
     return happy1
 }
-function imSorry () {
-	
-}
 // microsoft/arcade-block-objects
 // 
 // riknoll/arcade-story
@@ -61,7 +58,7 @@ function createConversation () {
     blockObject.setAnyProperty(startScript, AnyProp.NextPage, nextPage)
     blockObject.setStringArrayProperty(nextPage, StrArrayProp.Choices, ["I'm an old man!", "I'm sorry :("])
     blockObject.setAnyProperty(nextPage, AnyProp.Choice1, imAnOldMan())
-    blockObject.setAnyProperty(nextPage, AnyProp.Choice2, 0)
+    blockObject.setAnyProperty(nextPage, AnyProp.Choice2, imsorry())
     currentScript = startScript
 }
 function printScript (name: string, text: string, portrait: number) {
@@ -138,6 +135,14 @@ function printCurrentScript () {
         }
     })
 }
+function imsorry () {
+    imsorry1 = createScript("Mr. Kao", "im sorry, i only have $2", 1)
+    imsorry2 = createScript("Pineapple", "fine, i understand youre old so just pay me $2", 5)
+    imsorry3 = createScript("Mr. Kao", "okay thank you so much!!", 3)
+    blockObject.setAnyProperty(imsorry1, AnyProp.NextPage, imsorry2)
+    blockObject.setAnyProperty(imsorry2, AnyProp.NextPage, imsorry3)
+    return imsorry1
+}
 function imAnOldMan () {
     oldman1 = createScript("Mr. Kao", "I'm just an old man and I spent all my money gambling, please help me!!!", 3)
     oldman2 = createScript("Pineapple", "OK, just give me $2 and I will get you water", 3)
@@ -174,6 +179,9 @@ let nomoneyforyou2: blockObject.BlockObject = null
 let nomoneyforyou1: blockObject.BlockObject = null
 let oldman2: blockObject.BlockObject = null
 let oldman1: blockObject.BlockObject = null
+let imsorry3: blockObject.BlockObject = null
+let imsorry2: blockObject.BlockObject = null
+let imsorry1: blockObject.BlockObject = null
 let printingStuff = false
 let FinalChoice2: blockObject.BlockObject = null
 let FinalChoice1: blockObject.BlockObject = null
